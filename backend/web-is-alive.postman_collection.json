@@ -1,0 +1,25 @@
+{
+	"info": {
+		"_postman_id": "ff12610a-cd2c-4418-ae09-3750036bf6df",
+		"name": "web-is-alive",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

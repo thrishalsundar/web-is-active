@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "ff12610a-cd2c-4418-ae09-3750036bf6df",
+		"name": "web-is-active",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uname\":\"dil mera\",\r\n    \"pass\":\"cpu say\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4321/apis/actions/getUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4321",
+					"path": [
+						"apis",
+						"actions",
+						"getUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uname\":\"dil mera\",\r\n    \"pass\":\"cpu say\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4321/apis/actions/newUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4321",
+					"path": [
+						"apis",
+						"actions",
+						"newUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Site",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url_name\":\"Tamil Rockers\",\r\n    \"url\":\"tamilrockers.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4321/apis/actions/addSite?uname=dil mera",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4321",
+					"path": [
+						"apis",
+						"actions",
+						"addSite"
+					],
+					"query": [
+						{
+							"key": "uname",
+							"value": "dil mera"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Site",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url_name\":\"Google\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4321/apis/actions/remSite?uname=dil mera",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4321",
+					"path": [
+						"apis",
+						"actions",
+						"remSite"
+					],
+					"query": [
+						{
+							"key": "uname",
+							"value": "dil mera"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Status",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
