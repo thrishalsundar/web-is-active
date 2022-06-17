@@ -82,9 +82,12 @@ func (app *Remote) AddSite(c *gin.Context) {
 	err, sites := app.Actions.AddSite(crack, site)
 	if err != nil {
 		c.JSON(200, gin.H{
-			"message": "something went wring returns",
+			"message":  err,
+			"response": -1,
+			"sites":    sites,
 		})
-		panic(err)
+		// panic(err)
+		return
 	}
 	c.JSON(200, gin.H{
 		"message": "successfully added",

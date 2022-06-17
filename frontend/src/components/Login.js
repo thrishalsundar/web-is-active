@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
+import "./Login.css"
+import "../Main.css"
 
 const Login = () => {
     const [username, setUsername] = useState("")
@@ -18,18 +20,20 @@ const Login = () => {
             pass: password
         }
         axios.post('/apis/actions/getUser', data).then(res => {
-            navigate('/',{state: res.data})
+            navigate('/home',{state: res.data})
         }).catch(err => {
             console.log(err)
         })
     }
+
   return (
-    <div className="mt-[300px]">
-        <div className='max-w-[50%] mx-auto bg-white'>
+    <div className="flex depp-pinky-finger">
+        <div className='center depp-pinky-elumbu'>
             <h1>Login</h1>
-            Username:<input type="text" onChange={onUserNameChange} name="username" value={username}/><br/>
-            Password:<input type="text" onChange={onPasswordChange} name="password" value={password}/>
-            <button onClick={onSubmit}>Submit</button>
+            Enter username : <input className="input" type="text" onChange={onUserNameChange} name="username" value={username}/><br/>
+            Enter password : <input className="input" type="password" onChange={onPasswordChange} name="password" value={password}/><br/>
+            <button className="buttons" onClick={onSubmit}>Submit</button><br/>
+  New User? <button className="buttons" onClick={()=>navigate('/signup')}>Register</button>
         </div>
     </div>
   )

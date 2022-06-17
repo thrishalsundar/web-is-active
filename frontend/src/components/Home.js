@@ -1,6 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
+import "./Home.css"
+import "../Main.css"
+import ClearIcon from '@mui/icons-material/Clear';
+import CachedIcon from '@mui/icons-material/Cached';
 
 const Home = () => {
     const data = useLocation()
@@ -29,11 +33,15 @@ const Home = () => {
             if(!data) {
                 console.log("Error!!!")
             }
-            else {
+            else if(res.data.response===-1){
+                alert("Site Already exists")
+                flushForm()
+            }else {
                 setSites(data)
                 flushForm()
             }
-        }).catch(err => {
+        })
+        .catch(err => {
             console.log(err)
         })
     }
@@ -80,26 +88,36 @@ const Home = () => {
     }
     useEffect(() => {
         const checkComps = sites.map((ele) => {
-            return (<div key={ele.Url_name}>
-                        <p>Site Name: {ele.Url_name}</p>
-                        <p>Site URL: {ele.URL}</p>
-                        <p>Site Last Checked: {ele.LastChecked}</p>   
-                        <p>Last Checked Status: {(ele.LastCheckStat) ? "UP" : "DOWN"}</p>
-                        <button site={ele.Url_name} onClick={onCheckStatus}>Check Status</button><br/>
-                        <button site={ele.Url_name} onClick={removeSite}>Remove Site</button>
+            return (<div className='neoshadow depp-index-finger' key={ele.Url_name}>
+                        <div className='depp-index-nerambu'>
+                            <h1>{ele.Url_name}</h1>
+                            <p className='siteUrl'><b>URL :</b> <a href={ele.URL} target="_blank">http://{ele.URL}/</a></p>
+                            <p className='siteUrl'><b>Site Last Checked:</b> {ele.LastChecked}</p>
+                            <p className='siteUrl'><b>Last Checked Status:</b> {(ele.LastCheckStat) ? "UP" : "DOWN"}</p>
+                            
+                        </div>
+                        <div className='depp-index-elumbu'>
+                                <CachedIcon className='CompIcons' site={ele.Url_name} onClick={onCheckStatus} />
+                                {/* <button site={ele.Url_name} onClick={onCheckStatus}>Check Status</button>     */}
+                                <ClearIcon className='CompIcons' site={ele.Url_name} onClick={removeSite} />
+                            </div>
+                        
                     </div>)
         })
         setComps(checkComps)
     },[sites])
+
   return (
-    <div>
-        <h1>Welcome</h1>
+    <div className='motta'>
+        <h1><center>Welcome {userData}</center></h1>
         {comps}
-        <div>
-            <input name="url_name" type="text" onChange={onUrlNameChange} value={urlname}/>
-            <input name='url' type="text" onChange={onUrlChange} value={url}/>
-            <button onClick={onAddUrl}>Submit</button>
-        </div>
+        <div className='flex'><div className='neoshadow center depp-thumb-finger'>
+            <h1>Add Site</h1>
+            Enter Url Name : <input className='input depp-thumb-elumbu' name="url_name" type="text" onChange={onUrlNameChange} value={urlname}/><br/>
+            Enter Url :<input className='input depp-thumb-elumbu' name='url' type="text" onChange={onUrlChange} value={url}/><br/>
+            <button className='buttons' onClick={onAddUrl}>Submit</button>
+        </div></div>
+        
     </div>
   )
 }

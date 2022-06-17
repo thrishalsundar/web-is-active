@@ -72,6 +72,13 @@ func (app *App) AddSite(uname string, site models.Site) (error, []models.Site) {
 	}
 
 	newArr := foundUser.Sites
+	//dont add if dupe exists
+	for _, element := range foundUser.Sites {
+		if site.Url_name == element.Url_name {
+			return errors.New("site aleady exists"), newArr
+		}
+	}
+
 	newArr = append(newArr, site)
 	foundUser.Sites = newArr
 
